@@ -7,33 +7,33 @@
     		<p>潇潇奥妮</p>
   	</div>
     <div class="nav">
-    	<div class="navbar">
+    	<a class="navbar">
     			<p>个人中心</p>
     			<b >></b>
-    	</div>	
-    	<div class="navbar">
+    	</a>	
+    	<a class="navbar" href="#/opnelight" v-on:click="onClick">
     			<p>手电筒</p>
     			<b >></b>
-    	</div>
-    </div>
+    	</a>
+    </a>
     <div class="nav">
-    	<div class="navbar">
+    	<a class="navbar">
     			<p>设置</p>
     			<b >></b>
-    	</div>
+    	</a>
     </div>	
     <div class="nav">
-    	<div class="navbar">
+    	<a class="navbar">
     			<p class="exit" >退出登陆</p>
     		
-    	</div>
+    	</a>
     </div>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-
+import {bus}  from '../../static/js/bus.js'
 export default {
   name: 'login-view',
   data () {
@@ -42,8 +42,15 @@ export default {
       isDisabled: false,    // Disabled submit button
       isShow: 0,            // Show pwd
       passType: 'password',
-      error: ''             // Verification results
+      error: '',             // Verification results
+      mark:false
     }
+  },
+  methods:{
+  	onClick: function(){
+				let smark=this.mark;
+                bus.$emit('showmarkChanged',smark );
+            }
   }
  
 }
