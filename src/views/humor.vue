@@ -1,6 +1,5 @@
 <template>
-<div id="jokes"  calss="jokesss">
-		
+<div id="jokes"  calss="jokesss">		
 		<div  class="jokes "  v-for="c in titles">
 			<div class="header">
 				<img src="http://wxservice-wxservice.stor.sinaapp.com/imgjson/cbd.jpg" />
@@ -28,7 +27,6 @@
 		
 	</div>		
 </template>
-
 <script>
 	var humorreload=false;
 	sessionStorage.setItem('humorpage',2);	
@@ -48,8 +46,7 @@
 			}
 		},
 		components:{headerComponent},
-  		beforeCreate(){
-  			
+  		beforeCreate(){ 			
   			var self=this;
   			var humorisreload=true;
 				var page=localStorage.getItem('jokesview');
@@ -57,8 +54,7 @@
 				if(page!='<div class="item"><div class="mark">2018-01-20</div> <ul class="posts large"></ul></div>'&&page!=''&&page){
 					humorisreload=false;
 					humorreload=true;
-				}
-		
+				}	
 			if(humorisreload){
 				$.getJSON('./static/js/img/0.json',function(res){http://wxservice.applinzi.com/humor.php?page=1
   					self.titles=res.result.data;				
@@ -72,16 +68,13 @@
   				let	src=m.target;
   				let t=document.querySelector("#search").value;
   				let loc="http://wxservice.applinzi.com/humor.php?page=1";
-  				$.get(loc,function(res){
-  					
+  				$.get(loc,function(res){				
   					self.titles=res.tracks;
   					self.test=self.titles[0].medias[0].p2purl
   				},'json')
   				
-  			},
-  		
-           addnumf(m){
-				
+  			},		
+           addnumf(m){		
 				var span=m.target.parentNode.querySelector('span');
 				var n=parseInt(span.innerHTML);
 				n++;
@@ -97,8 +90,7 @@
 				$("#jokes").html(page);
 			}	
 			humortransletele ();
-		}
-		
+		}		
 	}
 	function humortransletele (){
 			setTimeout(function(){
@@ -124,8 +116,7 @@
          				if(Fixed<(Limit-150)){
              				 Fixed=Limit-150;
              				 
-       				   	}
-         				
+       				   }       				
           				ul.style.transform="translateY("+Fixed+"px)";
         			},false);	
         			ul.addEventListener("touchend",function(e){
@@ -150,8 +141,7 @@
 						if(res){
 							var datas=res.result.data;
 							var str="";
-							for(var i=0;i<datas.length;i++){
-							
+							for(var i=0;i<datas.length;i++){						
 	var str1='<div class="jokes"  ><div class="header"><img src="http://wxservice-wxservice.stor.sinaapp.com/imgjson/cbd.jpg" /><div class="body"><h4>admin</h4><div>发表于 :2018-1-15 13:11:11</div></div></div><img src="'+datas[i].url+'"/>'; 
 	var str2='<div class="footer">'+'<div class="addnum">'+'<a href="javascript:;" onclick="addnumf(e)">喜欢</a>'+'<span>1</span>'+'</div>'+'<div class="addnum">'+'<a href="javascript:;" onclick="addnumf(e)">不喜欢</a>';
 	var str3='<span>1</span>'+'</div>'+'<div class="addnum">'+ '<a style="text-align: left;" href="javascript:;" onclick="addnumf(e)">不感兴趣</a>'+'<span >1</span>'+'</div>'+'</div>'+'</div>';
@@ -173,15 +163,13 @@
 					}	
         	},2000)	;
 		}
-		window.addnumf=function (e){
-				
+		window.addnumf=function (e){			
 				var span=e.target.parentNode.querySelector('span');
 				var n=parseInt(span.innerHTML);
 				n++;
 				span.innerHTML=n;
 			}
 </script>
-	
 <style>
 	#jokes{
 		background: #ddd;
@@ -202,7 +190,7 @@
 		padding: 1rem 0.125rem;
 		font-size: 0.75rem;
 	}
-	#jokes .jokes   h4{
+	#jokes .jokes  h4{
 		text-align: left;
 		font-weight: 400;
 		font-size: 1rem;

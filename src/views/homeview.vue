@@ -23,14 +23,11 @@
 					<span >{{count1}}</span>
 				</div>
 			</div>
-		</div>
-		
+		</div>	
 	</div>
 </template>
-
 <script>
 	sessionStorage.setItem('homepage',1);
-	
 	var homereload=false;
 	export default {
 		name:'home-view',
@@ -41,16 +38,13 @@
         		titl:'趣事'
 			}
 		},
-		beforeCreate(){
-			
+		beforeCreate(){			
 			var self=this;
 			var homeisreload=true;
-			var page=localStorage.getItem('homeview');
-			
+			var page=localStorage.getItem('homeview');			
 			if(page!='<div class="item"><div class="mark">2018-01-20</div> <ul class="posts large"></ul></div>'&&page!=''&&page){
 					homeisreload=false;
-					homereload=true;
-					
+					homereload=true;					
 			}
 			if(homeisreload){
 				//$.getJSON('../../static/js/text/0.json',function(res,err){
@@ -58,11 +52,9 @@
 				//console.log(err)
 				//})
 				$.get('./static/js/text/0.json',function(res){
-  					//self.data=res.result.data;
-  					
+  					self.data=res.result.data;					
   				},'json')
-			}
-  			
+			}			
 		},
 		methods:{
 			addnumf(m){
@@ -104,10 +96,8 @@
               				Fixed=150;
           				}
          				if(Fixed<(Limit-150)){
-             				 Fixed=Limit-150;
-             				 
-       				   	}
-         				
+             				 Fixed=Limit-150;     				 
+       				   }       				
           				ul.style.transform="translateY("+Fixed+"px)";
         			},false);	
         			ul.addEventListener("touchend",function(e){
@@ -115,7 +105,6 @@
                 				Fixed=0;
           					  }
            					  if(Fixed<Limit){
-                				
                 				Fixed=Limit;
                 				addmorejokes();
                 				ul=document.querySelector("#flowbox");
@@ -133,8 +122,7 @@
 						if(res){
 							var datas=res.result.data;
 							var str="";
-							for(var i=0;i<datas.length;i++){
-							
+							for(var i=0;i<datas.length;i++){							
 	var str1='<div class="jokes"  ><div class="header"><img src="http://wxservice-wxservice.stor.sinaapp.com/imgjson/cbd.jpg" /><div class="body"><h4>admin</h4><div>发表于 :2018-1-15 13:11:11</div></div></div><p >'+datas[i].content+'</p>'; 
 	var str2='<div class="footer">'+'<div class="addnum">'+'<a href="javascript:;" onclick="addnumf(e)">喜欢</a>'+'<span>1</span>'+'</div>'+'<div class="addnum">'+'<a href="javascript:;" onclick="addnumf(e)">不喜欢</a>';
 	var str3='<span>1</span>'+'</div>'+'<div class="addnum">'+ '<a style="text-align: left;" href="javascript:;" onclick="addnumf(e)">不感兴趣</a>'+'<span >1</span>'+'</div>'+'</div>'+'</div>';
@@ -147,8 +135,7 @@
 	 							UlParHeight=ul.parentNode.offsetHeight;
         						UlHeight=ul.offsetHeight;
         						Limit=UlParHeight-UlHeight;
-                				Limit=UlParHeight-UlHeight;
-                			
+                				Limit=UlParHeight-UlHeight;               			
 						}},'json');
 					}
 					if($("#joke").html()!='<div class="item"><div class="mark">2018-01-20</div> <ul class="posts large"></ul></div>'&&$("#joke").html()!=''&&$("#joke").html()){

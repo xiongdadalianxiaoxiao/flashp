@@ -8,9 +8,7 @@
 			<a href="javscript:;" v-on:click="turnoffLight()">关</a>
 		</div>		
 	</div>
-	
 </template>
-
 <script>
 	export default {
 		name:'openlight',
@@ -44,32 +42,70 @@
        	 			}
   	 	 		}
    			}
+		},
+		mounted(){
+			opentransletele ()
 		}
 	}
-
+	function opentransletele (){
+			setTimeout(function(){	
+					console.log(1);
+	 				var ul=document.querySelector("#flowbox");
+	 				ul.style.transform="translateY("+Fixed+"px)";
+	 				var UlParHeight=ul.parentNode.offsetHeight;
+        			var UlHeight=ul.offsetHeight;
+        			var Limit=UlParHeight-UlHeight;
+        			var StartY=0;
+        			var MoveY=0;
+       				var EndY=0;
+        			var Fixed=0;
+        			ul.style.transform="translateY("+Fixed+"px)";
+        			ul.addEventListener("touchstart",function(e){
+             			StartY=e.touches[0].clientY;
+        			},false);
+       				ul.addEventListener("touchmove",function(e){
+            			 MoveY= e.touches[0].clientY;
+          				 var step=parseInt(StartY-MoveY);
+                		 Fixed-=step/5;
+          				if(Fixed>150){
+              				Fixed=150;
+          				}
+         				if(Fixed<(Limit-150)){
+             				 Fixed=Limit-150;          				 
+       				   }       				
+          				ul.style.transform="translateY("+Fixed+"px)";
+        			},false);	
+        			ul.addEventListener("touchend",function(e){
+           					 if(Fixed>0){
+                				Fixed=0;
+          					  }
+           					  if(Fixed<Limit){
+                				Fixed=Limit;              				
+            				 }
+           			ul.style.transform="translateY("+Fixed+"px)";
+					},false);
+				if($("#light").html()!='<div class="item"><div class="mark">2018-01-20</div> <ul class="posts large"></ul></div>'&&$("#light").html()!=''&&$("#light").html()){
+					localStorage.setItem('lightview',$("#light").html());
+				}					
+        	},1000)		
+		}
 </script>
-
-
-                		 	
-           			
-
 <style>
 	#openlight{
 		width:100%;
 		height:31.5rem;
 		padding-top:2rem;
 		padding-bottom: 2rem;
+		overflow: hidden;
 	}
 	#openlight h3{
 		width:100%;
 		height:2.3rem;
-		background:lightseagreen;
 		padding-right: 1rem;
 		font-size: 1rem;
 		text-align: center;
 		line-height: 2.3rem;
-		margin:2rem 0rem;
-		
+		margin:2rem 0rem;	
 	}
 	#openlight p{
 		width:100%;
@@ -86,8 +122,7 @@
 		justify-content: space-around;
 		padding: 0rem 1rem;
 	}
-	#openlight .lights a{
-		
+	#openlight .lights a{		
 		width:4rem;
 		height:4rem;
 		line-height: 4rem;

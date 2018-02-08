@@ -1,14 +1,11 @@
-<template>
-	
-<div id="light"  class="body">
-	
+<template>	
+<div id="light"  class="body">	
 	<div  class="item">
 		<!-- 日期分类 -->
 		<div class="mark" v-show="loaded">{{date}}</div>
 		<ul class="posts large">
 			<!-- 文章 -->
-			<a v-for="(post,index) in posts" v-bind:href="'#/article-detail:'+index" >
-				
+			<a v-for="(post,index) in posts" v-bind:href="'#/article-detail:'+index" >			
 				<span href="javascript:;" class="tag" v-if="post.column.name">{{post.column.name}}</span>
 				<div class="cont">
 					<h3>{{post.title}}</h3>
@@ -31,10 +28,8 @@
 	</div>
 </div>
 </template>
-
 <script>
 	var reloaded=false;
-	
 	import headerComponent from '../components/header'	
 	import {bus}  from '../../static/js/bus.js'
 	export default {
@@ -54,7 +49,6 @@
 		},
 		components:{headerComponent},
 		beforeCreate(){
-				
 				var isreload=true;
 				var page=localStorage.getItem('lightview');
 				var self=this;
@@ -70,8 +64,7 @@
 				}
 							
 		},
-		methods: {
-            
+		methods: {   
         },
 		mounted(){
 			var ul=document.querySelector("#flowbox");
@@ -81,14 +74,11 @@
 				var page=localStorage.getItem('lightview');
 				$("#light").html(page);
 			}	
-			transletelea ();
-			
-		}
-		
+			transletelea ();			
+		}	
 	}
 	function transletelea (){
-			setTimeout(function(){
-					
+			setTimeout(function(){				
 	 				var ul=document.querySelector("#flowbox");
 	 				ul.style.transform="translateY("+Fixed+"px)";
 	 				var UlParHeight=ul.parentNode.offsetHeight;
@@ -112,8 +102,7 @@
          				if(Fixed<(Limit-150)){
              				 Fixed=Limit-150;
              				 
-       				   	}
-         				
+       				   }   				
           				ul.style.transform="translateY("+Fixed+"px)";
         			},false);	
         			ul.addEventListener("touchend",function(e){
@@ -121,8 +110,7 @@
                 				Fixed=0;
           					  }
            					  if(Fixed<Limit){
-                				Fixed=Limit;
-                				
+                				Fixed=Limit;            				
             				 }
            			ul.style.transform="translateY("+Fixed+"px)";
 					},false);

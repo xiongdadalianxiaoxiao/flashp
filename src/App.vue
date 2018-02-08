@@ -1,6 +1,5 @@
-	
-<template>
 
+<template>
   <div id="app">
   	<div v-bind:class="state? 'float_box1':'float_box'" >
   		<div class="login-box">
@@ -14,16 +13,12 @@
  　　	　　	　			<router-view class="child-view"></router-view> 
 　　					</transition> 
   				</div>	
-  			</div>	
- 		
+  			</div>	 		
 			<header-component></header-component>
-  		</div>
-  		
+  		</div>	
   	</div>	
   </div>
-  
 </template>
-
 <script>
 import headerComponent  from './components/header'
 import headernav  from './components/headernav'
@@ -61,8 +56,7 @@ export default {
 	},
 	components:{LoginView,headerComponent,headernav},
 	created () {
-  		bus.$on('showmarkChanged', (text) => {
-  		
+  		bus.$on('showmarkChanged', (text) => {		
     	 this.state=text;
  	 })
 	}
@@ -211,6 +205,7 @@ img {
 #flowbox{
 	width:100%;
 	height:auto;
+	padding-top: 0.3rem;
 }
 .slide-right-enter-active,
 .slide-right-leave-active,

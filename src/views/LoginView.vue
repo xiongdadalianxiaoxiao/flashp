@@ -25,12 +25,10 @@
     <div class="nav">
     	<a class="navbar">
     			<p class="exit" >退出登陆</p>
-    		
     	</a>
     </div>
   </div>
 </template>
-
 <script>
 import { mapState } from 'vuex'
 import {bus}  from '../../static/js/bus.js'
@@ -49,20 +47,17 @@ export default {
   methods:{
   	onClick: function(){
 				let smark=this.mark;
-                bus.$emit('showmarkChanged',smark );
-            }
+            bus.$emit('showmarkChanged',smark );
+        }
   }
- 
 }
 </script>
-
 <style>
 	.login-view{
 		width:100%;
 		border: 1px solid #eee;
 		height:30rem;
-		background: #ddd;
-		
+		background: #ddd;	
 	}
 	.login-view .head{
 		width:100%;
@@ -73,15 +68,12 @@ export default {
 	.login-view h4{
 			width:100%;
 			height:3rem;
-			padding-left:5.5rem;
-		
-			
+			padding-left:5.5rem;		
 	}
 	.login-view h4 img{
 		width:3rem;
 		height:3rem;
 		border-radius: 50%;
-		
 	}
 	.login-view .head p{
 		width:100%;
@@ -89,7 +81,6 @@ export default {
 		line-height: 2rem;
 		text-align: center;
 	}
-	
 	.login-view  .nav{
 		margin-top:0.3rem;
 		background: #fff;
